@@ -85,7 +85,7 @@ app.get("/skapa", async(req, res) => {
 });
 app.post("/skapa", async(req, res) => {
     try{ 
-        const nyVara = {...req.body, status: "attKöpa", timestamp: new Date().toLocaleString()
+        const nyVara = {...req.body, status: "attKöpa", timestamp: new Date().toLocaleString("se-SE",{timezone:"Europe/Stockholm"} )
     };
         await col.insertOne(nyVara);
         res.redirect("/");
@@ -126,7 +126,7 @@ app.post("/redigera", async(req, res) => {
         const newData = {
             vara: req.body.vara,
             kommentar: req.body.kommentar,
-            timestamp: new Date()
+            timestamp: new Date().toLocaleString("se-SE",{timezone:"Europe/Stockholm"} )
         };
         await col.updateOne({
             "_id": objectId(req.body.id)
