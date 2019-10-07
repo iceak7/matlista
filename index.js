@@ -85,7 +85,7 @@ app.get("/skapa", async(req, res) => {
 });
 app.post("/skapa", async(req, res) => {
     try{ 
-        const nyVara = {...req.body, status: "attKöpa", timestamp: new Date().toLocaleString("se-SE",{timezone:"Europe/Stockholm"} )
+        const nyVara = {...req.body, status: "attKöpa", timestamp: new Date().toLocaleString("se-SE",{timezone:"Europe/Berlin"} )
     };
         await col.insertOne(nyVara);
         res.redirect("/");
