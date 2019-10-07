@@ -126,7 +126,7 @@ app.post("/redigera", async(req, res) => {
         const newData = {
             vara: req.body.vara,
             kommentar: req.body.kommentar,
-            timestamp: new Date().toLocaleString("se-SE",{timezone:"Europe/Stockholm"} )
+            timestamp: new Date().toLocaleString("se-SE",{timeZone: "Europe/Berlin"} )
         };
         await col.updateOne({
             "_id": objectId(req.body.id)
