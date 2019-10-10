@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin:0;
     padding:0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 body{
     background-color: rgba(223, 222, 222, 0.685);
@@ -9,14 +10,27 @@ body{
 hr{
     border:1px solid darkslategrey;
 }
+h1{
+    text-transform: capitalize;
+}
 input{
     margin-top:1vh;
-    width:50%;
+    width:80%;
     height:10vh;
     
 }
+
+#submitbutton{
+    cursor: pointer;
+}
 .skapa{
-    margin-top:2vh;
+    
+    background-color:darkslategrey;
+    width:45%;
+    margin:auto;
+    margin-top:5vh;
+    height:50vh;
+    padding-top:8vh;
     
 }
 .banner{
@@ -24,6 +38,8 @@ input{
     display:flex;
     width:100%;
     background-color:white;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 #logga{
     margin-top:8px;
@@ -49,6 +65,12 @@ main{
     padding-top: 1vh;
     border-top: 1px solid darkslategrey;
 }
+.item a{
+    color:black;
+}
+.item a:hover{
+    color:rgb(77, 76, 76);
+}
 nav ul{
     margin:0;
     padding:0;
@@ -62,12 +84,13 @@ nav li{
     width:100%;
     min-height:8vh;
     margin-top:1px;
+    padding-left:1%;
 }
 nav a{
     display: block;
     width:100%;
     min-height:8vh;
-    padding-top: 2vh;
+    padding-top: 1.5vh;
   
     font-size: 1.4rem;
     text-decoration: none;
@@ -76,6 +99,7 @@ nav a{
 nav a:hover{
     background-color:rgb(56, 94, 94);
 }
+
 
 
 
@@ -98,6 +122,9 @@ nav a:hover{
 
         display:flex;
         text-align: center;
+    }
+    nav li{
+        padding:0;
     }
 }
 

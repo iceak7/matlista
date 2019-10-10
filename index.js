@@ -47,7 +47,7 @@ app.get("/", async(req, res) => {
         <div class="item">
         
         <h1>${item.vara} </h1>
-        <p>Kommentar: ${item.kommentar} </p>
+        <p>Kommentar/antal: ${item.kommentar} </p>
         <p>Tid: ${item.timestamp}
         <br> 
         <a href="/radera/${item._id}">Radera</a>
@@ -69,11 +69,11 @@ app.get("/", async(req, res) => {
 app.get("/skapa", async(req, res) => {
     try{
         let main = `<div class="skapa"> <form action="/skapa" method="post">
-        <input type="text" name="vara" placeholder="Vara">  
+        <input type="text" name="vara" placeholder="   Vara">  
         <br>
-        <input type="text" name="kommentar" placeholder="Kommentar">  
+        <input type="text" name="kommentar" placeholder="  Kommentar/antal">  
         <br>
-        <input type="submit" value="save">  
+        <input id="submitbutton" type="submit" value="Lägg till">  
         </div>
         
     
@@ -107,13 +107,13 @@ app.get("/redigera/:id", async(req, res) => {
         const data = await col.findOne({
             "_id": objectId(req.params.id)
         }) 
-        let main = `<form action="/redigera" method="post">
-        <input type="text" name="vara" value="${data.vara}" placeholder="Vara">  
+        let main = `<div class="skapa"> <form action="/redigera" method="post">
+        <input type="text" name="vara" value="${data.vara}" placeholder="   Vara">  
         <br>
-        <input type="text" name="kommentar" value="${data.kommentar}" placeholder="Kommentar"> 
+        <input type="text" name="kommentar" value="${data.kommentar}" placeholder="  Kommentar/antal"> 
         <input type="hidden" name="id" value="${data._id}"> 
         <br>
-        <input type="submit" value="Update">  
+        <input type="submit" value="Uppdatera">   </div>
         
     
         </form>`;
