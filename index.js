@@ -73,7 +73,7 @@ app.get("/skapa", async(req, res) => {
         <br>
         <input type="text" name="kommentar" placeholder="  Kommentar/antal">  
         <br>
-        <input id="submitbutton" type="submit" value="Lägg till">  
+        <input class="submitbutton" type="submit" value="Lägg till">  
         </div>
         
     
@@ -113,7 +113,7 @@ app.get("/redigera/:id", async(req, res) => {
         <input type="text" name="kommentar" value="${data.kommentar}" placeholder="  Kommentar/antal"> 
         <input type="hidden" name="id" value="${data._id}"> 
         <br>
-        <input type="submit" value="Uppdatera">   </div>
+        <input class="submitbutton" type="submit" value="Uppdatera">   </div>
         
     
         </form>`;

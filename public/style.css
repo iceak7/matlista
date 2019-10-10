@@ -20,7 +20,7 @@ input{
     
 }
 
-#submitbutton{
+.submitbutton{
     cursor: pointer;
 }
 .skapa{
