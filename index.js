@@ -44,13 +44,16 @@ app.get("/", async(req, res) => {
     const output = data.map(item=>{
 
         return `
+        <div class="item">
+        
         <h1>${item.vara} </h1>
         <p>Kommentar: ${item.kommentar} </p>
         <p>Tid: ${item.timestamp}
         <br> 
         <a href="/radera/${item._id}">Radera</a>
         <a href="/redigera/${item._id}">Redigera</a>
-        <hr>
+        </div>
+        
         `
     })
     const main = output.join("");
@@ -65,12 +68,13 @@ app.get("/", async(req, res) => {
 });
 app.get("/skapa", async(req, res) => {
     try{
-        let main = `<form action="/skapa" method="post">
+        let main = `<div class="skapa"> <form action="/skapa" method="post">
         <input type="text" name="vara" placeholder="Vara">  
         <br>
         <input type="text" name="kommentar" placeholder="Kommentar">  
         <br>
         <input type="submit" value="save">  
+        </div>
         
     
         </form>`;
@@ -190,8 +194,42 @@ function htmlOutput(title, body){
     </head>
 
     <body>
+    <header>
+    <div class="banner">
+    <div id="logga">Matlista</div>
+    <div id="menuButton" onclick="changeId()">&equiv;</div>
+    </div>
+    </header>
+    
+    <nav  class="hidden" id="toggleHidden">
+    <ul>
+    <li> <a href="/">Hem </a> </li>
+    <li> <a href="/skapa">Lägg till vara</a> </li>
+    <li><a href="/inkoptavaror">Inköpta varor </a></li>
+    <li><a href="/om">Om </a> </li>
+    </ul>
+    </nav>
+    
+  
+    
+    <main>
     ${body}    
+    </main>
+    <script>
+    
+
+
+function changeId(){
+   
+    let navToggleHidden = document.getElementById("toggleHidden");
+
+    navToggleHidden.classList.toggle("hidden");
+}
+
+</script>
     </body>
+    
+ 
     </html>
     `
 
@@ -201,5 +239,9 @@ function htmlOutput(title, body){
 
 
 
+
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log("http is running on port 3000"));
+

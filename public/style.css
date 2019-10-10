@@ -1,3 +1,103 @@
-body{
-    text-align: center;
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
 }
+body{
+    background-color: rgba(223, 222, 222, 0.685);
+}
+hr{
+    border:1px solid darkslategrey;
+}
+input{
+    margin-top:1vh;
+    width:50%;
+    height:10vh;
+    
+}
+.skapa{
+    margin-top:2vh;
+    
+}
+.banner{
+    min-height:10vh;
+    display:flex;
+    width:100%;
+    background-color:white;
+}
+#logga{
+    margin-top:8px;
+    font-size: 2rem;
+    flex: 10;
+    color:black;
+}
+#menuButton{
+    font-size: 3rem;
+    float: right;
+    cursor:pointer;
+    user-select: none;
+    color:black;
+    
+}
+main{
+    text-align: center;
+    color:black;
+    
+}
+.item{
+    padding-bottom: 3vh;
+    padding-top: 1vh;
+    border-top: 1px solid darkslategrey;
+}
+nav ul{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+}
+
+nav li{
+
+    background-color: darkslategray;
+    color: white;
+    width:100%;
+    min-height:8vh;
+    margin-top:1px;
+}
+nav a{
+    display: block;
+    width:100%;
+    min-height:8vh;
+    padding-top: 2vh;
+  
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: white;
+}
+nav a:hover{
+    background-color:rgb(56, 94, 94);
+}
+
+
+
+.hidden{
+    display:none;
+}
+
+@media(min-width:600px){
+
+    .hidden{
+        display:block;
+    }
+   
+
+   #menuButton{
+        display:none;
+    } 
+    
+    nav ul{
+
+        display:flex;
+        text-align: center;
+    }
+}
+
