@@ -89,7 +89,7 @@ app.get("/skapa", async(req, res) => {
 });
 app.post("/skapa", async(req, res) => {
     try{ 
-        const nyVara = {...req.body, status: "attKöpa", timestamp: new Date().toLocaleString("de-DE",{timezone:"Europe/Berlin"} )
+        const nyVara = {...req.body, status: "attKöpa", timestamp: new Date().toLocaleString("de-DE",{timezone:"Europe/Berlin", hour12:false} )
     };
         await col.insertOne(nyVara);
         res.redirect("/");
@@ -130,7 +130,7 @@ app.post("/redigera", async(req, res) => {
         const newData = {
             vara: req.body.vara,
             kommentar: req.body.kommentar,
-            timestamp: new Date().toLocaleString("de-DE",{timeZone: "Europe/Berlin"} )
+            timestamp: new Date().toLocaleString("de-DE",{timeZone: "Europe/Berlin", hour12:false} )
         };
         await col.updateOne({
             "_id": objectId(req.body.id)
