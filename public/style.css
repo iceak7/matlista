@@ -12,27 +12,34 @@ hr{
 }
 h1{
     text-transform: capitalize;
+    font-size: 25px;
 }
 input{
     margin-top:1vh;
     width:80%;
-    height:10vh;
-    
+    height:6vh;
+    font-size: 0.8rem;
+    padding-left: 2px;
+    min-height: 25px;
 }
 
 .submitbutton{
     cursor: pointer;
+    margin-top:10vh;
 }
 .skapa{
     
     background-color:darkslategrey;
-    width:45%;
+    width:60%;
     margin:auto;
     margin-top:5vh;
-    height:50vh;
-    padding-top:8vh;
+    height:55vh;
+    padding-top:10vh;
+    max-width:400px;
     
 }
+
+
 .banner{
     height:70px;
     display:flex;
@@ -42,8 +49,8 @@ input{
     padding-right: 1%;
 }
 #logga{
-    margin-top:12px;
-    font-size: 2rem;
+    margin-top:10px;
+    font-size: 35px;
     flex: 10;
     color:black;
 }
@@ -67,6 +74,15 @@ main{
 }
 .item a{
     color:black;
+    font-size: 15px;
+}
+.tid{
+
+    font-size: 10px;
+    
+}
+.kommentar{
+    margin-bottom:2vh;
 }
 .item a:hover{
     color:rgb(77, 76, 76);
@@ -82,15 +98,15 @@ nav li{
     background-color: darkslategray;
     color: white;
     width:100%;
-    min-height:8vh;
+    height:50px;
     margin-top:1px;
     
 }
 nav a{
     display: block;
     width:100%;
-    min-height:8vh;
-    padding-top: 1.5vh;
+    height:50px;
+    padding-top: 8px;
     padding-left:1%;
   
     font-size: 1.4rem;
