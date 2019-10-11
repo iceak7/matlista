@@ -34,7 +34,7 @@ input{
     
 }
 .banner{
-    height:12vh;
+    height:70px;
     display:flex;
     width:100%;
     background-color:white;
@@ -42,7 +42,7 @@ input{
     padding-right: 1%;
 }
 #logga{
-    margin-top:8px;
+    margin-top:12px;
     font-size: 2rem;
     flex: 10;
     color:black;
@@ -84,13 +84,14 @@ nav li{
     width:100%;
     min-height:8vh;
     margin-top:1px;
-    padding-left:1%;
+    
 }
 nav a{
     display: block;
     width:100%;
     min-height:8vh;
     padding-top: 1.5vh;
+    padding-left:1%;
   
     font-size: 1.4rem;
     text-decoration: none;
