@@ -40,28 +40,35 @@ app.use(express.urlencoded({
 app.get("/", async(req, res) => {
 
     try{
-    const data = await col.find().toArray();
+    const data = await col.find({status:"attKöpa"}).toArray();
+   
+    
+    
     const output = data.map(item=>{
-
         return `
         <div class="item">
         
         <h1>${item.vara} </h1>
         <p class="kommentar">Kommentar/antal: ${item.kommentar} </p>
         
-        <a href="/radera/${item._id}">Radera</a>
-        <a href="/redigera/${item._id}">Redigera</a>
+        
+        <a class="updateButton" href="/updatestatus/${item._id}">Lägg till som köpt</a>
+        
+        <a class="linkButtons" href="/radera/${item._id}">Radera</a>
+        <a class="linkButtons" href="/redigera/${item._id}">Redigera</a>
         <p class="tid">Tid: ${item.timestamp} </p>
         </div>
         
         `
+
     })
+    
     const main = output.join("");
     res.send(htmlOutput("Hem", main));
     }
 
-    catch{
-        res.send("Error")
+    catch (erro){
+        res.send("dksakdsakd")
 
     }
 
@@ -144,22 +151,82 @@ app.post("/redigera", async(req, res) => {
 
 });
 
-app.get("/om", async(req, res) => {
+app.get("/updatestatus/:id", async(req, res) => {
+   
+    try{ 
+        await col.updateOne({"_id": objectId(req.params.id)},{ $set: {status:"köpt", timestamp:new Date().toLocaleString("sv-SE",{timeZone: "Europe/Berlin", hour12:false} ) } });
 
-    res.send("Om");
+        res.redirect("/");
+    }
+
+
+    catch{console.log("update error")}
+
+
+});
+
+app.get("/om", (req, res) => {
+   
+
+    let omText=`<div class="omText">
+    Det här är en hemsida som är gjord för att enkelt kunna skriva upp varor som behövs köpas in. 
+    Sedan ska man kunna läsa vad som behvös köpas in från vilken enhet som helst. 
+    <p> Gjord av Isak Jensen. </p>
+
+
+    </div>
+    
+    
+    
+    `
+    res.send(htmlOutput("Om",omText ));
+    
+
+   
 
 });
 
 app.get("/inkoptavaror", async(req, res) => {
 
-    res.send("Inköpta varor");
+    try{
+        const data = await col.find({status:"köpt"}).toArray();
+       
+        
+        
+        const output = data.map(item=>{
+            return `
+            <div class="item">
+            
+            <h1>${item.vara} </h1>
+            <p class="kommentar">Kommentar/antal: ${item.kommentar} </p>
+            
+            
+            
+            
+            <a class="linkButtons" href="/radera/${item._id}">Radera</a>
+            <a class="linkButtons" href="/redigera/${item._id}">Redigera</a>
+            <p class="tid">Köpt: ${item.timestamp} </p>
+            </div>
+            
+            `
+    
+        })
+        
+        const main = output.join("");
+        res.send(htmlOutput("Inköpta varor", main));
+        }
+    
+        catch {
+            res.send("Error när inköpta varor hämtades")
+    
+        }
+
 
 });
 
 app.get("/visa/:id", async(req, res) => {
 
-    res.send("visa");
-
+    
 });
 
 app.get("/radera/:id", async(req, res)=>{
@@ -236,6 +303,17 @@ function changeId(){
 
 
 };
+
+async function läggTillIKöpt(varaId){
+    try{ 
+        await col.updateOne({"_id": objectId(varaId)},{ $set: {status:"köpt"} });
+    }
+
+
+    catch{console.log("update error")}
+
+
+}
 
 
 

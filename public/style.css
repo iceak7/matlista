@@ -47,6 +47,7 @@ input{
     background-color:white;
     padding-left: 1%;
     padding-right: 1%;
+    border-bottom: 1px solid darkslategrey;
 }
 #logga{
     margin-top:10px;
@@ -64,29 +65,69 @@ input{
 }
 main{
     text-align: center;
-    color:black;
+     color:black; 
     
 }
+
 .item{
     padding-bottom: 3vh;
     padding-top: 1vh;
-    border-top: 1px solid darkslategrey;
+    border-bottom: 1px solid darkslategrey;
+    
 }
-.item a{
+.linkButtons{
     color:black;
-    font-size: 15px;
+    font-size: 12px;
 }
+.linkButtons:hover{
+    color:rgb(77, 76, 76);
+}
+.updateButton{
+    background-color:darkslategrey;
+    font-size: 15px;
+    
+    display:block;
+    width:15%;
+    min-width:150px;
+    padding:4px;
+    color:white;
+    text-decoration: none;
+    margin:auto;
+    margin-bottom:1vh;
+    
+
+  
+
+}
+
+.updateButton:hover{
+    background-color:rgb(56, 94, 94);
+    
+
+}
+
+
 .tid{
 
     font-size: 10px;
     
 }
+
+.omText{
+
+    margin:auto;
+    width:80%;
+    margin-top:10vh;
+    font-size: 1rem;
+}
+.omText p{
+
+    margin-top:5vh;
+}
 .kommentar{
-    margin-bottom:2vh;
+    margin-bottom:1vh;
 }
-.item a:hover{
-    color:rgb(77, 76, 76);
-}
+
 nav ul{
     margin:0;
     padding:0;
@@ -143,5 +184,10 @@ nav a:hover{
     nav li{
         padding:0;
     }
+
+    .banner{
+        border-bottom: none;
+    }
+  
 }
 
