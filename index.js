@@ -96,7 +96,7 @@ app.get("/skapa", async(req, res) => {
 });
 app.post("/skapa", async(req, res) => {
     try{ 
-        const nyVara = {...req.body, status: "attKöpa", timestamp: new Date().toLocaleString("sv-SE",{timezone:"Europe/Berlin", hour12:false} )
+        const nyVara = {...req.body, status: "attKöpa", timestamp: new Date().toLocaleString("sv-SE",{timeZone: "Europe/Berlin", hour12:false} ) 
     };
         await col.insertOne(nyVara);
         res.redirect("/");
@@ -270,7 +270,7 @@ function htmlOutput(title, body){
     
     <nav  class="hidden" id="toggleHidden">
     <ul>
-    <li> <a href="/">Hem </a> </li>
+    <li id="firstLi"> <a href="/">Hem </a> </li>
     <li> <a href="/skapa">Lägg till vara</a> </li>
     <li><a href="/inkoptavaror">Inköpta varor </a></li>
     <li><a href="/om">Om </a> </li>
@@ -282,18 +282,7 @@ function htmlOutput(title, body){
     <main>
     ${body}    
     </main>
-    <script>
-    
-
-
-function changeId(){
-   
-    let navToggleHidden = document.getElementById("toggleHidden");
-
-    navToggleHidden.classList.toggle("hidden");
-}
-
-</script>
+   <script src="client.js"> </script>
     </body>
     
  
@@ -314,6 +303,7 @@ async function läggTillIKöpt(varaId){
 
 
 }
+
 
 
 
