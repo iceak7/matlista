@@ -66,10 +66,12 @@ input{
 main{
     text-align: center;
      color:black; 
-    
+     position: absolute;
+    width: 100%;
 }
 
 .item{
+  
     padding-bottom: 1vh;
     padding-top: 1vh;
     border-bottom: 1px solid black;
@@ -106,6 +108,39 @@ main{
 
 }
 
+.allButtonsBox{
+    position: absolute;
+    display: block;
+    right:0;
+    z-index: 10;
+    width:10vw;
+    min-width: 100px;
+    height:35px;
+    padding:2px;
+    margin-right:5px;
+    
+}
+
+.allButtons{
+  
+    background-color:darkslategrey;
+   
+    font-size: 0.5rem; 
+    display: block;
+    width:100%;
+    min-width:100px;
+    padding:4px;
+    color:white;
+    text-decoration: none;
+    margin-top:1px;
+    margin-right:2px;
+   
+   
+
+}
+.allButtons:hover{
+    background-color: gray;
+}
 
 .tid{
 
@@ -195,7 +230,27 @@ nav a:hover{
         border-top: none;
     }
 
-    
+    .allButtonsBox{
+        
+        display:flex;
+        width:20vw;
+        min-width: 210px;
+        margin-right:2px;
+        
+        
+    }
+
+    .allButtons{
+        width:50%;
+        min-width: 100px;
+        margin-right:1px;
+        padding-top: 8px;
+        
+
+    }
+
   
 }
+
+
 

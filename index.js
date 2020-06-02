@@ -52,7 +52,7 @@ app.get("/", async(req, res) => {
         <p class="kommentar">Kommentar/antal: ${item.kommentar} </p>
         
         
-        <a class="updateButton" href="/updatestatus/${item._id}">Lägg till som köpt</a>
+        <a class="updateButton" href="/uppdaterastatus/${item._id}">Lägg till som köpt</a>
         
         <a class="linkButtons" href="/radera/${item._id}">Radera</a>
         <a class="linkButtons" href="/redigera/${item._id}">Redigera</a>
@@ -63,7 +63,7 @@ app.get("/", async(req, res) => {
 
     })
     
-    const main = output.join("");
+    const main = "<div class='allButtonsBox'>  <a class='allButtons' href='/uppdaterastatus/kopt'>Lägg till alla som köpt</a> <a class='allButtons' href='/radera/attköpa'>Radera alla</a> </div>"+ output.join("");
     res.send(htmlOutput("Hem", main));
     }
 
@@ -151,7 +151,25 @@ app.post("/redigera", async(req, res) => {
 
 });
 
-app.get("/updatestatus/:id", async(req, res) => {
+app.get("/uppdaterastatus/kopt", async(req, res)=> {
+    try{
+        await col.updateMany({status:"attKöpa"},{ $set: {status:"köpt", timestamp:new Date().toLocaleString("sv-SE",{timeZone: "Europe/Berlin", hour12:false} ) } })
+        
+   
+        
+
+        res.redirect("/");
+    }
+
+
+    catch{
+        console.log("update error")
+    }
+
+
+});
+
+app.get("/uppdaterastatus/:id", async(req, res) => {
    
     try{ 
         await col.updateOne({"_id": objectId(req.params.id)},{ $set: {status:"köpt", timestamp:new Date().toLocaleString("sv-SE",{timeZone: "Europe/Berlin", hour12:false} ) } });
@@ -164,6 +182,8 @@ app.get("/updatestatus/:id", async(req, res) => {
 
 
 });
+
+
 
 app.get("/om", (req, res) => {
    
@@ -229,9 +249,23 @@ app.get("/visa/:id", async(req, res) => {
     
 });
 
+app.get("/radera/attköpa", async(req,res)=>{
+
+
+});
+
+app.get("/radera/köpt", async(req,res)=>{
+
+
+});
 app.get("/radera/:id", async(req, res)=>{
     try{
-        await col.deleteOne({"_id": objectId(req.params.id)});
+        const skaRaderas =await col.findOne({"_id": objectId(req.params.id)});
+        const raderaStatus=skaRaderas.status;
+        console.log(raderaStatus);
+
+
+         await col.deleteOne({"_id": objectId(req.params.id)});
         res.redirect("/");
 
     }
@@ -292,22 +326,6 @@ function htmlOutput(title, body){
 
 
 };
-
-async function läggTillIKöpt(varaId){
-    try{ 
-        await col.updateOne({"_id": objectId(varaId)},{ $set: {status:"köpt"} });
-    }
-
-
-    catch{console.log("update error")}
-
-
-}
-
-
-
-
-
 
 
 const port = process.env.PORT || 3000;
